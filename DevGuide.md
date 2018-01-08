@@ -7,8 +7,6 @@ This Developer Guide provides instructions on setting up the project pre-requisi
 
 HoneyBadger uses a Serverless API built using Amazon API Gateway, Lambda, DynamoDB, and CloudFormation. The API has the following REST methods, and some methods can only be called by users with "Admin" privileges.
 
-![HoneyBadger API]
-
 For full visibility into how everything works, you're able to setup the backend API in a fully automated way in your personal AWS account, which will then allow you to tweak settings and better understand the key interactions.
 
 ### Installing the prerequisites
@@ -19,7 +17,7 @@ The framework relies on [Node.js] and [npm].
     npm install gulpjs/gulp-cli -g
 
     # Checkout the git repo
-    git clone https://github.com/horangi-ir/HoneyBadgerAPI.git
+    git clone https://github.com/xhad/HoneyBadgerAPI.git
     
     # install the Node modules for the bootstrapping process 
     cd HoneyBadgerAPI/api

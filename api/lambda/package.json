@@ -1,17 +1,8 @@
 {
-  "name": "spacefinder-api-lambda",
-  "description": "SpaceFinder-API",
+  "name": "honeybadger-api",
+  "description": "honeybadger-API",
   "version": "1.0.0",
-  "author": "Jim Tran, Justin Pirtle, and Vladimir Budilov",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/justonian/spacefinder.git"
-  },
-  "bugs": {
-    "url": "https://github.com/justonian/spacefinder/issues"
-  },
-  "homepage": "https://github.com/justonian/spacefinder#readme",
   "dependencies": {
     "aws-sdk": "^2.128.0",
     "bunyan": "^1.8.3",

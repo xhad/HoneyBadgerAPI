@@ -12,13 +12,12 @@ This is a serverless reference app for authentication using:
 
 
 ```
-npm i 
 cd api
 npm i
 cd ./lambda
 npm i
 
-aws confgure <enter your cred>
+aws configure <enter your cred>
 npm run gulp deploy
 ```
 
@@ -30,7 +29,7 @@ To generate the Swagger SDK for Client:
 ```
 brew install swagger-codegen
 mkdir client 
-swagger-codegen swagger-codegen generate -i ./api/swagger/HoneyBadgerAPI.yml -l javascript -o ./client/honeybadger-sdk
+swagger-codegen generate -i ./api/swagger/HoneyBadgerAPI.yml -l javascript -o ./client/honeybadger-sdk
 ```
 
 

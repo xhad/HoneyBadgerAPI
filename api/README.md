@@ -5,7 +5,7 @@ lambda/data
 Contains base class for tables with ServicesTable extending this class. These classes and methods are wrappers to DynamoDB calls.
 
 ```
-gulp create_tables
+npm run gulp create_tables
 ```
 will create any defined table
 
