@@ -8,6 +8,7 @@ This is a serverless reference app for authentication using:
 - COGNITO USER POOLS
 - COGNITO FEDERATED IDENTITIES
 - DYNAMODB
+- S3 BUCKETS
 - LAMBDA
 
 
