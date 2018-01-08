@@ -19,10 +19,10 @@ The framework relies on [Node.js] and [npm].
     npm install gulpjs/gulp-cli -g
 
     # Checkout the git repo
-    git clone https://github.com/horangi-ir/horangi_honeybadger_api.git
+    git clone https://github.com/horangi-ir/HoneyBadgerAPI.git
     
     # install the Node modules for the bootstrapping process 
-    cd horangi_honeybadger_api/api
+    cd HoneyBadgerAPI/api
     npm install
     
     # install the Node modules for the Lambda run-time
@@ -30,7 +30,7 @@ The framework relies on [Node.js] and [npm].
     npm install
     
     # Optional: Update the API config file if you'd like to use a specific non-default AWS profile or different region than us-east-1 to install to.
-    # vi horangi_honeybadger_api/api/config.js
+    # vi HoneyBadgerAPI/api/config.js
 
     # Run the API automated bootstrapping process to deploy all AWS resources to your account
     # gulp commands need to be run from 'api' directory
@@ -41,88 +41,13 @@ The framework relies on [Node.js] and [npm].
     npm run gulp bootstrap
 
 
-## Mobile app
-
-The mobile app is a hybrid mobile app, and is built on the [Ionic2 framework], which relies on [Angular 2] and [TypeScript 2.0]. The hybrid mobile app can run on Android devices and iOS devices, as well as a modern web browser.
-
-
-
-### Installing the prerequisites
-
-The application framework relies on [Node.js] and [npm]. It also uses [Apache Cordova] plugins to support certain native functionality on mobile devices.
-
-    # install Ionic2 CLI, Cordova, and Bower tools
-    npm install -g ionic cordova bower
-    
-    # install the Node modules 
-    cd horangi_honeybadger_api/app
-    npm install
-
-    # install Cordova platform components if you would like to build the app for mobile
-    cordova platform add android
-    cordova platform add ios
-    
-### Running the app
-
-As a hybrid mobile app, HoneyBadger can run in web browser, on Android devices, and on Apple iOS devices.
-
-#### Run in a web browser
-
-This useful for development purposes. If prompted for address/port to bind to, choose 'localhost'
-
-    ionic serve
-
-#### Run in an Android device or emulator
-    
-You can run the app in an actual Android mobile device, or in an Android emulator. The following command generates
-an Android APK file, and run it in an Android emulator. Note that this requires previous installation of the Android SDK and existence of the ANDROID_HOME environmental variable.
-
-    ionic cordova run android
-
-Alternatively, to generate just the Android APK file, which can then be loaded onto an Android device:
-
-    ionic cordova build android
-
-Remote debug live content on an Android device from your Windows, Mac, or Linux computer,
-using [Chrome's remote debugger tool], and visiting `chrome://inspect` in your Chrome browser.
-There are also third-party tools such as [Vysor] which can allow you to view your mobile device screen on your computer.
-
-#### Run in an Apple iOS emulator
-
-    ionic cordova run ios
-    
- ----
-    
-### Using the app
-
-#### Sample users and data
-
-Sample users and location/resource data are created as part of the bootstrapping process, to make it easy for you to try out the user flows. Use the following users to login to the application. You may additionally create your own personal accounts.
-
-* Standard user
-  * Username: `masterbadger`
-  * Password: `Test123!`
-  * Can browse resources, make bookings, and upload profile picture
-
-* Admin user
-  * Username: `honeybadger`
-  * Password: `Test123!`
-  * Can additionally create and delete locations and resources
-
-#### Console logging
-
-Enable the browser developer console (or remote debugging for Android) to view all of the log messages.
-
-The log messages will show you all tokens retrieved as part of the sign-in process, as well as all API calls made and the corresponding authorization for each call.
-
------
 
 ### Uninstallation
 
 When you're through testing and using the application, you may run the following command to delete any previously created backend resources that are hosted in your AWS account.
 
-    cd aws-serverless-auth-reference-app/api
-    gulp undeploy
+    cd HoneyBadgerAPI/api
+    npm run gulp undeploy
 
 [AWS Cognito]:https://aws.amazon.com/cognito/
 [AWS Lambda]:https://aws.amazon.com/lambda/ 
