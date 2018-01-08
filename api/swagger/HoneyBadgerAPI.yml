@@ -1,0 +1,172 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: HoneyBadger-API
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths
+basePath: /
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /services:
+    get:
+      description: Returns List of 'Services'
+      # used as the method name of the controller
+      operationId: services-List
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/ServicesListResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      security:
+      - honeybadger-userPool-authorizer: []
+    post:
+      description: Adds a Services
+      operationId: services-Create
+      parameters:
+      - $ref: "#/parameters/Service"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Service"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      security:
+      - sigv4: []
+
+  /services/{serviceId}:
+    delete:
+      description: Deletes a Service
+      operationId: services-Delete
+      parameters:
+      - $ref: "#/parameters/ServiceId"
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      security:
+      - honeybadger-custom-authorizer: []
+    get:
+      description: Returns a Service
+      # used as the method name of the controller
+      operationId: services-Get
+      parameters:
+      - $ref: "#/parameters/ServiceId"
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/Service"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      security:
+      - sigv4: []
+
+parameters:
+  Service:
+    in: "body"
+    name: "body"
+    required: true
+    schema:
+      $ref: "#/definitions/Service"
+  ServiceId:
+    in: "path"
+    name: "serviceId"
+    required: true
+    type: string
+
+  UserId:
+    in: "path"
+    name: "userId"
+    required: true
+    type: string
+
+# complex objects have schema definitions
+definitions:
+  ServicesListResponse:
+    required:
+    - items
+    properties:
+      items:
+        type: array
+        items:
+          $ref: "#/definitions/Service"
+  Service:
+    required:
+    - name
+    properties:
+      serviceId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      imageUrl:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+      - type
+    properties:
+      message:
+        type: string
+      type:
+        type: string
+securityDefinitions:
+  honeybadger-custom-authorizer:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+    x-amazon-apigateway-authtype: "custom"
+  honeybadger-userPool-authorizer:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+    x-amazon-apigateway-authtype: "cognito_user_pools"
+  sigv4:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+    x-amazon-apigateway-authtype: "awsSigv4"
+x-amazon-apigateway-gateway-responses:
+  DEFAULT_4XX:
+    responseParameters:
+      gatewayresponse.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+    responseTemplates:
+      application/json: "{\"message\":$context.error.messageString}"
+  DEFAULT_5XX:
+    responseParameters:
+      gatewayresponse.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+    responseTemplates:
+      application/json: "{\"message\":$context.error.messageString}"
