@@ -1,14 +1,14 @@
 ## HoneyBadger API
 
-*honeybadger.services
+<h4>honeybadger.services</h4>
 
 This is a serverless reference app for authentication using:
 
-[API GATEWAY]
-[COGNITO USER POOLS]
-[COGNITO FEDERATED IDENTITIES]
-[DYNAMODB]
-[LAMBDA]
+- API GATEWAY
+- COGNITO USER POOLS
+- COGNITO FEDERATED IDENTITIES
+- DYNAMODB
+- LAMBDA
 
 
 ```
@@ -24,11 +24,14 @@ npm run gulp deploy
 
 
 ### Client
+
+To generate the Swagger SDK for Client:
+
 ```
 brew install swagger-codegen
 mkdir client 
-swagger-codegen swagger-codegen generate -i http://petstore.swagger.io/v2/swagger.json -l ruby -o /tmp/test/
+swagger-codegen swagger-codegen generate -i ./api/swagger/HoneyBadgerAPI.yml -l javascript -o ./client/honeybadger-sdk
+```
 
-To generate the Swagger SDK for Client
 
-This is based on https://github.com/awslabs/aws-serverless-auth-reference-app
+ https://github.com/awslabs/aws-serverless-auth-reference-app
