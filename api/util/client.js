@@ -8,7 +8,7 @@ var cognito = rfr('/util/cognito');
 var path = require('path');
 var fs = require('fs');
 
-let appGeneratedConfigFile = path.join(__dirname,'..','..','app','src','config','config-overrides-generated.ts');
+let appGeneratedConfigFile = path.join(__dirname,'..','..','client','src','config','config-overrides-generated.ts');
 let lambdaEnvironmentConfigFile = path.join(__dirname,'..','lambda','environment.js');
 
 function generateClientConfig() {

@@ -5,14 +5,7 @@
 .DS_Store
 *.swp
 Thumbs.db
-app/.tmp/
-app/node_modules/
-app/platforms/
-app/plugins/
-app/src/assets/vendor/bower_components/
-app/www/assets
-app/www/build/
-api/dist/
+client/src/config/config-overrides-generated.ts
 api/lambda/node_modules/
 api/later/
 api/node_modules/
