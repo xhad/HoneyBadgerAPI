@@ -10,7 +10,7 @@
   "author": "Chad Lynch",
   "license": "Apache-2.0",
   "dependencies": {
-    "archiver": "^1.1.0",
+    "archiver": "^7.0.0",
     "aws-sdk": "^2.128.0",
     "bunyan": "^1.8.3",
     "bunyan-prettystream": "^0.1.3",
